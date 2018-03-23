@@ -25,6 +25,21 @@ public class MainActivity extends AppCompatActivity {
 //            getSupportFragmentManager().beginTransaction().add(R.id.leerer_container, myMainFragment).commit();
             getSupportFragmentManager().beginTransaction().add(R.id.empty_container, new Main_Fragmentum()).commit();
             // TODO (1.3  finde den FEHLER .. aber wie ??
+            /*
+            :app:compileDebugJavaWithJavac
+C:\Users\ego\GIT-repositories\github\ANDExercise1ganzSelbst_1\app\src\main\java\com\example\ego\and_exercise1_ganzselbst\MainActivity.java:26: error: no suitable method found for add(int,Main_Fragmentum)
+            getSupportFragmentManager().beginTransaction().add(R.id.empty_container, new Main_Fragmentum()).commit();
+                                                          ^
+    method FragmentTransaction.add(Fragment,String) is not applicable
+      (argument mismatch; int cannot be converted to Fragment)
+    method FragmentTransaction.add(int,Fragment) is not applicable
+      (argument mismatch; Main_Fragmentum cannot be converted to Fragment)
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+1 error
+
+ FAILED
+
+             */
         }
     }
 }

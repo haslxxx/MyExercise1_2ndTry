@@ -7,12 +7,16 @@
     android:orientation="vertical"
     >
 
-    <EditText
-        android:id="@+id/textField"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="#ee9fff"
-        android:hint="Gib einen Text ein" />
+
+         <EditText
+            android:id="@+id/textField"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="#ee9fff"
+            android:hint="Gib einen Text ein" />
+
+
+
 
     <Button
         android:id="@+id/button_fragment"

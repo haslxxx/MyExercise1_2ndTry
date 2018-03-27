@@ -3,39 +3,43 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:padding="8dp"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_gravity="center"
     >
 
 
-     <EditText
-        android:id="@+id/textField"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="#ee9fff"
-        android:hint="Gib einen Text ein" />
+
+         <EditText
+            android:id="@+id/textField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:layout_margin="8dp"
+             android:inputType="textMultiLine"
+            android:hint="@string/kleiner_tipp"
+             android:background="#ee9fff"
+         />
 
 
 
+        <Button
+            android:id="@+id/button_open_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Call Fragment"
+            android:background="#ee9f00"
+            android:layout_margin="8dp"
+            android:layout_marginTop="16dp"
 
-    <Button
-        android:id="@+id/button_open_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="Call Fragment"
-        android:background="#ee9f00"
-        android:layout_margin="8dp"
-        android:layout_marginTop="16dp"
+            />
 
-        />
-
-    <Button
-        android:id="@+id/button_open_activity"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="Call Activity"
-        android:background="#ee9f00"
-        android:layout_margin="8dp"
-        />
+        <Button
+            android:id="@+id/button_open_activity"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Call Activity"
+            android:background="#ee9f00"
+            android:layout_margin="8dp"
+            />
 
 </LinearLayout>

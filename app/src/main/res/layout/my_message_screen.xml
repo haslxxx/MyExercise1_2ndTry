@@ -2,15 +2,26 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id = "@+id/anzeige"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:gravity="top"
+        android:text="Das ist der message_screen"
+        android:textSize="13dp"
+        />
 
     <TextView
         android:id = "@+id/ausgabe_feld"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Hier könnte Ihr text stehen"
+        android:text="Hier könnte Ihr text stehen bbbbbbbbbbbbbbbbbbbbbbbbbbb"
         android:textSize="20dp"
+        android:background="#e4949a"
         />
 
 </LinearLayout>

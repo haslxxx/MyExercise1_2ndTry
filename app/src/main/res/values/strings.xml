@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">AND-Exercise1-ganzSelbst</string>
+    <string name="app_name">Mein Übung1</string>
+    <string name="kleiner_tipp">Gib was nettes ein</string>
 </resources>

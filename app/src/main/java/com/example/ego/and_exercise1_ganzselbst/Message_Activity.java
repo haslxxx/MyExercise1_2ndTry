@@ -1,6 +1,11 @@
+/*
+Diese Activity wird aufgerufen wenn im Main_Fragmentum der button mit der id "button_open_acticity" gedrückt wird
+Seine einzige aufgabe besteht darin den wert im eingabefeld vom Main_Fragmentum (layout = my_fragment_main.xml) wieder anzuzeigen
+ */
+
 package com.example.ego.and_exercise1_ganzselbst;
 
-// import android.app.Activity; DAS wäre die für "Activity" als Basisklasse gewesen ....
+// import android.app.Activity; DAS wäre die für "Activity" als Basisklasse gewesen, aber wir verwenden ja AppCompatActivity als Basis ....
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity; // DAS ist die für "App....Activity" als basisklasse
 import android.widget.TextView;

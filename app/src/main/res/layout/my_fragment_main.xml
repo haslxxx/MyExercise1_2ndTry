@@ -8,18 +8,18 @@
     >
 
 
-         <EditText
-            android:id="@+id/textField"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:background="#ee9fff"
-            android:hint="Gib einen Text ein" />
+     <EditText
+        android:id="@+id/textField"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="#ee9fff"
+        android:hint="Gib einen Text ein" />
 
 
 
 
     <Button
-        android:id="@+id/button_fragment"
+        android:id="@+id/button_open_fragment"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:text="Call Fragment"
@@ -30,7 +30,7 @@
         />
 
     <Button
-        android:id="@+id/button_activity"
+        android:id="@+id/button_open_activity"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:text="Call Activity"

@@ -17,6 +17,10 @@ import android.widget.EditText;
 /**
  * Created by ego on 22.03.2018.
  */
+/*
+A Fragment is a piece of an application's user interface or behavior that can be placed in an Activity.
+Interaction with fragments is done through FragmentManager, which can be obtained via Activity.getFragmentManager() and Fragment.getFragmentManager().
+ */
 
 public class Main_Fragmentum extends Fragment {
 
@@ -43,8 +47,8 @@ public class Main_Fragmentum extends Fragment {
         //Referenzen auf die elemente im layout holen
         // FIXME (2.3) ?? warum sieht das in einem Fragment anders aus als in einer Activity (ohne getView() ) (siehe Message_activity)
         textEingabe    = getView().findViewById(R.id.textField);
-        activityAufruf = getView().findViewById(R.id.button_activity);
-        fragmentAufruf = getView().findViewById(R.id.button_fragment);
+        activityAufruf = getView().findViewById(R.id.button_open_activity);
+        fragmentAufruf = getView().findViewById(R.id.button_open_fragment);
 
 
         //Wert des textEingabe-feldes holen falls das Fragment schon mal gelaufen ist
@@ -83,21 +87,30 @@ public class Main_Fragmentum extends Fragment {
                 */
                 Intent myIntent = new Intent(v.getContext(), Message_Activity.class); //Message_Activity.class --> Dorthin wollen wir
 
-                myIntent.putExtra(MESSAGE_KEY, textZuUebergeben); // Methode um
+                myIntent.putExtra(MESSAGE_KEY, textZuUebergeben); // Methode um daten "hinüberzuschicken in die aufgerufene Activity
                 //putExtra's gibt's wie sand am meer .. für alle eventualitäten; hier vermutlich putExtra(String name, String value)
-                // das gegenstück auf "der anderen seite" ist getExtra()  :-)
+                //das gegenstück auf "der anderen seite" ist getExtra()  :-)
 
                 startActivity(myIntent); // Darum geht's uns ja eigentlich ;-)
-
-
-                // startActivity(Message_Activity.getIntent(getContext(), getMessage())); // Hier beginnen die spezifika des listeners
-                // FIXME (2.4) ?? das getContext() is halt so ?? .. kommt von irgendwo ??
-
             } // end of embedded function
         });
 
         // TODO -- 2. der Button der das Fragment aufrufen soll
+        fragmentAufruf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String textZuUebergeben = textEingabe.getText().toString();  //Wir holen den eingegebenen text aus der view
+                getFragmentManager()                            // Fragments werden immer mit dem getFragmentManager erzeugt
+                        .beginTransaction()
+                        // Wir ersetzen hier die aktuelle View (??) gegen
+                        .replace(R.id.my_empty_container,       // FIXME (2.4) ?? eigentlich sind wir doch im  "my_fragment_main" siehe onCreateView, wieso also DAS
+//                                Message_Fragmentum.getFragment(textZuUebergeben))  // FIXME (2.5)  Das mit dem Intent geht im Fragment scheinbar nicht :-(
+                                    new Message_Fragmentum())   // So wäre alles fein, wenn wir nicht diesen blöden string aus dem eingabefeld in Main_Fragmentum übermitteln müssten
+                        .addToBackStack(null)
+                        .commit();
 
+            }
+        });
 
     }
 

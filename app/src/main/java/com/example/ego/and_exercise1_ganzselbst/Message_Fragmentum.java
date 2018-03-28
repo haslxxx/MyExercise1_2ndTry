@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by ego on 27.03.2018.
@@ -41,8 +42,11 @@ public class Message_Fragmentum extends Fragment {
     @Override
     public void onViewCreated(View myFragmentView, Bundle mySavedInstanceState_5) {
         super.onViewCreated(myFragmentView, mySavedInstanceState_5);
-        // TODO (5.1) Messagtext holen aus dem Intent
+        // TODO (5.1) Messagtext holen aus dem Bundle
 
+        String zurueckgeholterText = getArguments().getString(EXTRA_MESSAGE_TO_TRANSFER_KEY); //FIXME (5.2) ?? woher kommt die methode getArguments
+        TextView myMessageTextView = getView().findViewById(R.id.ausgabe_feld); // FIXME (5.3) ?? woher kommt die methode getView
+        myMessageTextView.setText(zurueckgeholterText);
 
     }
 
@@ -50,7 +54,7 @@ public class Message_Fragmentum extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        //TODO (5.2) messagetext sichern
+        //TODO (5.4) messagetext sichern
         //String textZuUebergeben = textEingabe.getText().toString();
         //outState.putString(MESSAGE_KEY, textZuUebergeben);
     }

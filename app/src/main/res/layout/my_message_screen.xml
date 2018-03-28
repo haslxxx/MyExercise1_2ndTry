@@ -18,8 +18,8 @@
         android:id = "@+id/ausgabe_feld"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Hier könnte Ihr text stehen bbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        android:gravity="left"
+        android:text="Hier könnte Ihr text stehen"
         android:textSize="20dp"
         android:background="#e4949a"
         />

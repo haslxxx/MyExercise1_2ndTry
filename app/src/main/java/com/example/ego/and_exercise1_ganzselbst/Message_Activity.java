@@ -27,6 +27,12 @@ import android.widget.TextView;
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
     </activity>
+
+    .. gemacht habe ich es nach vorlage aus der LV sooo -->
+     <activity android:name=".Message_Activity"
+            android:parentActivityName=".MainActivity">
+     </activity>
+       !!!!! Funktioniert, aber Irgendwo murrt aber was, dass diese methode veraltet ist !!!!!
 */
 
 public class Message_Activity extends AppCompatActivity {
@@ -40,30 +46,36 @@ public class Message_Activity extends AppCompatActivity {
         -- Context des AUfrufers, also von wo wir kommen werden
         -- String um den's eigentlich geht
     */
+    // Die Activity stelle hier eine Methode zur verfügung über die sie dann selber im zurückgegebenen Intent gestartet wird ... ein bisserl 3 mal um den hals und dann gekratzt ...
     public static Intent myGetIntent(Context myContext, String myTextEingabe) {
-        Intent myIntent = new Intent(myContext, Message_Activity.class); //
-        myIntent.putExtra(EXTRA_MESSAGE_TRANSFER_KEY, myTextEingabe);
+        Intent myIntent = new Intent(myContext, Message_Activity.class);
+        myIntent.putExtra(EXTRA_MESSAGE_TRANSFER_KEY, myTextEingabe);   //in das Intent den zu übermittelnden Text "hineinstopfen"
         return myIntent;
     }
 
     // Methode 2  Was beim erzeugen der Klasse passiert .. i.e. der constructor
-    // FIXME (3.0) ?? Ist das eigentlich ein Konstruktor, ?? Wo wird "Message_Activity" instanziert
+    // FIXME (3.0) ?? Ist das eigentlich ein Konstruktor,
+    // FIXME (3.0.1) ?? Wo wird "Message_Activity" instanziert
     @Override
     protected void onCreate(Bundle myOnsavedInstanceState_3) {
         super.onCreate(myOnsavedInstanceState_3);
         setContentView(R.layout.my_message_screen);       // Set activity content; inflate ressource; add top level Views to activity
 
-        // TODO (3.1) Hier müsste man noch den connex zum feldinhalt aus dem Fragmentum herstellen
         TextView ausgabeView = findViewById(R.id.ausgabe_feld); //Ausgabe View erzeugen und referenz auf das textfeld herstellen
 
         // A. Feld befüllen ... zunächst HARDCODED, bis ich die übergabemethode (mit dem Intent)  verstanden habe
         // ausgabeView.setText("Ich bin eine ausgabe");
 
         // B. Feld befüllen .. nun mit Intent und allem drumherum
-        String zurueckgeholterText = getIntent().getStringExtra(EXTRA_MESSAGE_TRANSFER_KEY);
+        String zurueckgeholterText = "Displayed by ACTIVITY !\n ";
+        zurueckgeholterText += getIntent().getStringExtra(EXTRA_MESSAGE_TRANSFER_KEY); // FIXME (3.2) ?? woher kommt die methode getIntent hier eigentlich (woher weiß sie welcher Intent ??)
+
         ausgabeView.setText(zurueckgeholterText);
     }
 
 
-
+    // TODO (3.3) zurückgeholtenText sichern, falls der Activity "was passiert" (i.e. onStop oder so ..)
+    // FIXME (3.3.1) ?? DAS ist in der referenzlösung nicht passiert (dortselbst aber im MessageFragment sehr wohl)  ? vergessen oder plan dahinter ?
+    // JEDOCH ... auch ohne geht der text nicht verloren wenn man, das device dreht, eine andere app zwischendurch aufruft !!
+    // sollte das das Verdienst des "super.onCreate (myOnsavedState...) " -aufruf's sein ??
 }

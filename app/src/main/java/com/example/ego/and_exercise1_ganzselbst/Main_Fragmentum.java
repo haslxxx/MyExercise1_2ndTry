@@ -106,17 +106,25 @@ public class Main_Fragmentum extends Fragment {
             } // end of embedded function
         });
 
-        // TODO -- 2. der Button der das Fragment aufrufen soll
+
+
+        //  -- 2. der Button der das Fragment aufrufen soll
         fragmentAufruf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String textZuUebergeben = textEingabe.getText().toString();  //Wir holen den eingegebenen text aus der view
+// ####### B. Wir erzeugen mithilfe der methode die in Message_Fragemntum zur verfügung gestellt wird das Fragment, um den Text dort hineinstopfen zu können
+                Fragment myNewMessageFragment = Message_Fragmentum.getFragment(textZuUebergeben);
+
                 getFragmentManager()                            // Fragments werden immer mit dem getFragmentManager erzeugt
                         .beginTransaction()
-                        // Wir ersetzen hier die aktuelle View (??) gegen
+                        // FIXME (2.5) Wir ersetzen hier die aktuelle View (??) gegen das neuen Fragment (oder deren View ?? )
                         .replace(R.id.my_empty_container,       // FIXME (2.4) ?? eigentlich sind wir doch im  "my_fragment_main" siehe onCreateView, wieso also DAS
 //                                Message_Fragmentum.getFragment(textZuUebergeben))  // FIXME (2.5)  Das mit dem Intent geht im Fragment scheinbar nicht :-(
-                                    new Message_Fragmentum())   // So wäre alles fein, wenn wir nicht diesen blöden string aus dem eingabefeld in Main_Fragmentum übermitteln müssten
+// ####### A. Ohne die Methode zum erzeugen des Fragments (siehe Message_Fragmentum)
+//                                    new Message_Fragmentum())   // So wäre alles fein, wenn wir nicht diesen blöden string aus dem eingabefeld in Main_Fragmentum übermitteln müssten
+// ####### B. MIT der Methode
+                                      myNewMessageFragment)
                         .addToBackStack(null)
                         .commit();
 
@@ -126,7 +134,7 @@ public class Main_Fragmentum extends Fragment {
     }
 
 
-    // TODO ( ) wir kümmern unds um die daten für den fall das das system das Fragment Stopp't
+    // TODO (2.6) wir kümmern unds um die daten für den fall das das system das Fragment Stopp't
     /*
     There are a few scenarios in which your activity is destroyed due to normal app behavior, such as when the user presses the Back button
     or your activity signals its own destruction by calling the finish() method.

@@ -37,7 +37,9 @@ public class Main_Fragmentum extends Fragment {
     private Button activityAufruf;
     private Button fragmentAufruf;
 
-    private static final String MESSAGE_KEY = "blubb"; // Key für die datenübergabe im Intent zwischen DIESEM Fragment und der per Button aufgerufenen Activity /Fragment
+    // FALSCH : Key für die datenübergabe im Intent zwischen DIESEM Fragment und der per Button aufgerufenen Activity /Fragment
+    // RICHTIG: Key den wir im "onSaveInstanceState verwenden um im Bundle den wert der texteingabe zu sichern; in onViewCreated wird er dann zur wiederherstellung verwendet
+    private static final String MESSAGE_REBUILD_KEY = "blubb";  // inhalt irrelevant; dient nur der erstellung eines schlüssel-strings
 
 
     @Override
@@ -60,8 +62,9 @@ public class Main_Fragmentum extends Fragment {
         you must check whether the state Bundle is null before you attempt to read it.
         If it is null, then the system is creating a new instance of the activity, instead of restoring a previous one that was destroyed.
          */
+        // Wiederherstellen gesicherter Daten
         if (mySavedInstanceState_2 != null) {
-            String myGoodOldMessage = mySavedInstanceState_2.getString(MESSAGE_KEY); // Aus dem Bundle den String mit dem Key "MESSAGE_KEY" holen
+            String myGoodOldMessage = mySavedInstanceState_2.getString(MESSAGE_REBUILD_KEY); // Aus dem Bundle den String mit dem Key "MESSAGE_KEY" holen
             textEingabe.setText(myGoodOldMessage);
         }
 
@@ -73,6 +76,7 @@ public class Main_Fragmentum extends Fragment {
             public void onClick(View v) {  //eingebettete funktion !! ??
                 String textZuUebergeben = textEingabe.getText().toString();  //Wir holen den eingegebenen text aus der view
 
+                // ####### Die THEORIE zum INTENT ###########
                 /* An Intent is an object that provides runtime binding between separate components, such as two activities.
                 The Intent represents an app’s "intent to do something." You can use intents for a wide variety of tasks,
                 but in this case my intent starts another activity.
@@ -85,13 +89,20 @@ public class Main_Fragmentum extends Fragment {
                 -- A Context as its first parameter  v.getContext()  --> quasi "woher kommen wir"
                 -- The Class of the app component to which the system should deliver the Intent (in this case, the activity that should be started).
                 */
-                Intent myIntent = new Intent(v.getContext(), Message_Activity.class); //Message_Activity.class --> Dorthin wollen wir
 
-                myIntent.putExtra(MESSAGE_KEY, textZuUebergeben); // Methode um daten "hinüberzuschicken in die aufgerufene Activity
+                // ######## Erster Versuch --> FALSCH  #########
+                // FIXME (2.4) FALSCH(1) --> Intent myIntent = new Intent(v.getContext(), Message_Activity.class); //Message_Activity.class --> Dorthin wollen wir
+                // FIXME --> ??  weil das Intent in der KLasse erzeugt werden muss, wo die Ziel Activity wohnt , oder könnte man das Pferd auch von der Aufruferseite aufzäumen ?
+
+                // FIXME FALSCH(1) --> myIntent.putExtra(MESSAGE_KEY, textZuUebergeben); // Methode um daten "hinüberzuschicken in die aufgerufene Activity
                 //putExtra's gibt's wie sand am meer .. für alle eventualitäten; hier vermutlich putExtra(String name, String value)
                 //das gegenstück auf "der anderen seite" ist getExtra()  :-)
 
-                startActivity(myIntent); // Darum geht's uns ja eigentlich ;-)
+
+                // ######## Zweiter Versuch #########
+                Intent myNewIntent = Message_Activity.myGetIntent(v.getContext(),textZuUebergeben); // intent mit hilfe der Metode aus Message_Activity erzeugen
+
+                startActivity(myNewIntent); // Darum geht's uns ja eigentlich ;-)  .. uff.. UND DAS GEHT NICHT EINFACHER ??
             } // end of embedded function
         });
 
@@ -135,7 +146,10 @@ public class Main_Fragmentum extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         String textZuUebergeben = textEingabe.getText().toString();
-        outState.putString(MESSAGE_KEY, textZuUebergeben);
+        outState.putString(MESSAGE_REBUILD_KEY, textZuUebergeben);
     }
 
 }
+
+// FIXME (my_fragment_main.xml)  ?? Jeglicher versuch den editText mit einer Viewgroup wie Textlayout, TextinputLayout zu klammern
+// FIXME .. führt unweigerlich zu einer fehlermeldung , weil er diese Klassen nicht findet  --> Frag mal das INTERNET ... Das Forum schweigt sowieso

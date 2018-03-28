@@ -21,15 +21,15 @@ public class Message_Fragmentum extends Fragment {
     private static final String EXTRA_MESSAGE_TO_TRANSFER_KEY = "peperl";
 
     // Das Fragment stelle hier eine Methode zur verfügung über die es dann selber erzeugt wird ... ein bisserl 3 mal um den hals und dann gekratzt ...
-    public static Fragment getFragment(String textZuUebergeben) {
-        Message_Fragmentum fragment = new Message_Fragmentum();
+    public static Fragment myGetFragment(String textZuUebergeben) {
+        Message_Fragmentum myMessageFragment = new Message_Fragmentum();
 
         // Um einem Fragment daten zu übergeben erzeugt man ein "Bundle" (AssoziativArray) in das man dann die daten stopft
         Bundle argsBundle = new Bundle();
         argsBundle.putString(EXTRA_MESSAGE_TO_TRANSFER_KEY, textZuUebergeben); // Methode um in ein Bundle was hineinzustopfen
-        fragment.setArguments(argsBundle);
+        myMessageFragment.setArguments(argsBundle);
 
-        return fragment;
+        return myMessageFragment;
     }
 
 
@@ -42,15 +42,17 @@ public class Message_Fragmentum extends Fragment {
     @Override
     public void onViewCreated(View myFragmentView, Bundle mySavedInstanceState_5) {
         super.onViewCreated(myFragmentView, mySavedInstanceState_5);
-        // TODO (5.1) Messagtext holen aus dem Bundle
 
-        String zurueckgeholterText = getArguments().getString(EXTRA_MESSAGE_TO_TRANSFER_KEY); //FIXME (5.2) ?? woher kommt die methode getArguments
+        // TODO (5.1) Messagtext holen aus dem Bundle
+        String zurueckgeholterText = "Displayed by FRAGMENT !\n\n";
+        zurueckgeholterText += getArguments().getString(EXTRA_MESSAGE_TO_TRANSFER_KEY); //FIXME (5.2) ?? woher kommt die methode getArguments
         TextView myMessageTextView = getView().findViewById(R.id.ausgabe_feld); // FIXME (5.3) ?? woher kommt die methode getView
         myMessageTextView.setText(zurueckgeholterText);
 
     }
 
     // Für den fall, daß die app "stillgelegt" wird (onSTop, onPause .. oder so ??) -- > anzeigetext sichern
+    // FIXME (5.4)  Ohne passiert auch nix ! -> siehe auch Message_Activity (detto)
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

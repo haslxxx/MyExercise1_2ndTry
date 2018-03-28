@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Mein Übung1</string>
     <string name="kleiner_tipp">Gib was nettes ein</string>
+    <string name="platzhalter">Hier könnte Ihr text stehen</string>
+    <string name="button_activity_text">ACTIVITY Aufruf</string>
+    <string name="button_fragment_text">FRAGMENT Aufruf</string>
+
 </resources>

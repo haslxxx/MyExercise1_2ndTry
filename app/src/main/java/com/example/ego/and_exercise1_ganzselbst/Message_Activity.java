@@ -67,7 +67,7 @@ public class Message_Activity extends AppCompatActivity {
         // ausgabeView.setText("Ich bin eine ausgabe");
 
         // B. Feld befüllen .. nun mit Intent und allem drumherum
-        String zurueckgeholterText = "Displayed by ACTIVITY !\n ";
+        String zurueckgeholterText = "Displayed by ACTIVITY !\n\n ";
         zurueckgeholterText += getIntent().getStringExtra(EXTRA_MESSAGE_TRANSFER_KEY); // FIXME (3.2) ?? woher kommt die methode getIntent hier eigentlich (woher weiß sie welcher Intent ??)
 
         ausgabeView.setText(zurueckgeholterText);

@@ -26,7 +26,7 @@
             android:id="@+id/button_open_activity"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Call Activity"
+            android:text="@string/button_activity_text"
             android:background="#ee9f00"
             android:layout_margin="8dp"
             />
@@ -34,7 +34,7 @@
             android:id="@+id/button_open_fragment"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Call Fragment"
+            android:text="@string/button_fragment_text"
             android:background="#ee9f00"
             android:layout_margin="8dp"
 

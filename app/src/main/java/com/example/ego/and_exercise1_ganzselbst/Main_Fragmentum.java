@@ -114,7 +114,7 @@ public class Main_Fragmentum extends Fragment {
             public void onClick(View v) {
                 String textZuUebergeben = textEingabe.getText().toString();  //Wir holen den eingegebenen text aus der view
 // ####### B. Wir erzeugen mithilfe der methode die in Message_Fragemntum zur verfügung gestellt wird das Fragment, um den Text dort hineinstopfen zu können
-                Fragment myNewMessageFragment = Message_Fragmentum.getFragment(textZuUebergeben);
+                Fragment myNewMessageFragment = Message_Fragmentum.myGetFragment(textZuUebergeben);
 
                 getFragmentManager()                            // Fragments werden immer mit dem getFragmentManager erzeugt
                         .beginTransaction()
@@ -161,3 +161,5 @@ public class Main_Fragmentum extends Fragment {
 
 // FIXME (my_fragment_main.xml)  ?? Jeglicher versuch den editText mit einer Viewgroup wie Textlayout, TextinputLayout zu klammern
 // FIXME .. führt unweigerlich zu einer fehlermeldung , weil er diese Klassen nicht findet  --> Frag mal das INTERNET ... Das Forum schweigt sowieso
+
+// FIXME (my_fragmen_main.xml) ?? die texte für Buttons aus dem strings.xml werde in UPPERCASE ausgegeben ?? wieso ?? was dagegen tun

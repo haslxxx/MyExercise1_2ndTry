@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ANDExercise1ganzSelbst_1.iml" filepath="$PROJECT_DIR$/ANDExercise1ganzSelbst_1.iml" />
+      <module fileurl="file://C:\Users\ego\git-FH\MyExercise1_2ndTry\ANDExercise1ganzSelbst_1.iml" filepath="C:\Users\ego\git-FH\MyExercise1_2ndTry\ANDExercise1ganzSelbst_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyExercise1_2ndTry.iml" filepath="$PROJECT_DIR$/MyExercise1_2ndTry.iml" />
       <module fileurl="file://C:\Users\ego\GIT-repositories\github\ANDExercise1ganzSelbst_1\MyExercise1_2ndTry.iml" filepath="C:\Users\ego\GIT-repositories\github\ANDExercise1ganzSelbst_1\MyExercise1_2ndTry.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

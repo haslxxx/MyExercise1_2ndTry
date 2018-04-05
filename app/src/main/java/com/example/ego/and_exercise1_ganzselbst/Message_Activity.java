@@ -1,5 +1,5 @@
 /*
-Diese Activity wird aufgerufen wenn im Main_Fragmentum der button mit der id "button_open_acticity" gedrückt wird
+Diese Activity wird aufgerufen wenn im Main_Fragmentum der button mit der id "button_open_activity" gedrückt wird
 Seine einzige aufgabe besteht darin den wert im eingabefeld vom Main_Fragmentum (layout = my_fragment_main.xml) wieder anzuzeigen
  */
 
@@ -40,18 +40,20 @@ public class Message_Activity extends AppCompatActivity {
     // Key für die übergabe des wertes in textEingabe durch den onClick listener in Main_Fragmentum
     private static final String EXTRA_MESSAGE_TRANSFER_KEY = "bupsi"; // inhalt irrelevant; dient nur der erstellung eines schlüssel-strings
 
-    /* Methode 1 .. die zur verfügung gestellt wird, damit ein intent von außen erzeugt werden kann, in das der anzuzeigende string (myTextEinagbe) gestopft wird (puExtra)
+    /* Methode 1 .. die zur verfügung gestellt wird, damit ein intent von außen erzeugt werden kann, in das der anzuzeigende string (myTextToDisplay) gestopft wird (puExtra)
        Wird aufgerufen im onClick zum starten DIESER(hier) activity
        Übergeben werden:
-        -- Context des AUfrufers, also von wo wir kommen werden
+        -- Context des Aufrufers, also von wo wir kommen werden
         -- String um den's eigentlich geht
     */
     // Die Activity stelle hier eine Methode zur verfügung über die sie dann selber im zurückgegebenen Intent gestartet wird ... ein bisserl 3 mal um den hals und dann gekratzt ...
-    public static Intent myGetIntent(Context myContext, String myTextEingabe) {
+    public static Intent myGetIntent(Context myContext, String myTextToDisplay) {
         Intent myIntent = new Intent(myContext, Message_Activity.class);
-        myIntent.putExtra(EXTRA_MESSAGE_TRANSFER_KEY, myTextEingabe);   //in das Intent den zu übermittelnden Text "hineinstopfen"
+        myIntent.putExtra(EXTRA_MESSAGE_TRANSFER_KEY, myTextToDisplay);   //in das Intent den zu übermittelnden Text "hineinstopfen" !! DESWEGEN MACHEN WIR DAS INTENT HIER !!
         return myIntent;
     }
+    // TODO .... wenn man eine methode getMessageKey (übergäbe EXTRA_MESSAGE_TRANSFER_KEY)  hier machen würde, -->
+    // --> könnte die funktion getMyIntent auch in Main_Fragmentum stehen, oder dort sogar der code direkt im onClick() stehen
 
     // Methode 2  Was beim erzeugen der Klasse passiert .. i.e. der constructor
     // FIXME (3.0) ?? Ist das eigentlich ein Konstruktor,
@@ -62,13 +64,15 @@ public class Message_Activity extends AppCompatActivity {
         setContentView(R.layout.my_message_screen);       // Set activity content; inflate ressource; add top level Views to activity
 
         TextView ausgabeView = findViewById(R.id.ausgabe_feld); //Ausgabe View erzeugen und referenz auf das textfeld herstellen
+        //FIXME ?? Warum brauchen wir hier kein 'getView() wie im Main_Fragmentum.java
 
         // A. Feld befüllen ... zunächst HARDCODED, bis ich die übergabemethode (mit dem Intent)  verstanden habe
         // ausgabeView.setText("Ich bin eine ausgabe");
 
         // B. Feld befüllen .. nun mit Intent und allem drumherum
         String zurueckgeholterText = "Displayed by ACTIVITY !\n\n ";
-        zurueckgeholterText += getIntent().getStringExtra(EXTRA_MESSAGE_TRANSFER_KEY); // FIXME (3.2) ?? woher kommt die methode getIntent hier eigentlich (woher weiß sie welcher Intent ??)
+        zurueckgeholterText += getIntent().getStringExtra(EXTRA_MESSAGE_TRANSFER_KEY);
+        // FIXME (3.2) ?? woher kommt die methode getIntent hier eigentlich (woher weiß sie welcher Intent ??)
 
         ausgabeView.setText(zurueckgeholterText);
     }

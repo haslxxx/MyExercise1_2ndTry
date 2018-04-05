@@ -20,7 +20,8 @@ public class Message_Fragmentum extends Fragment {
 
     private static final String EXTRA_MESSAGE_TO_TRANSFER_KEY = "peperl";
 
-    // Das Fragment stelle hier eine Methode zur verfügung über die es dann selber erzeugt wird ... ein bisserl 3 mal um den hals und dann gekratzt ...
+    // Das Fragment stelle hier eine Methode zur verfügung über die es dann selber erzeugt wird
+    // ... ein bisserl 3 mal um den hals und dann gekratzt ...
     public static Fragment myGetFragment(String textZuUebergeben) {
         Message_Fragmentum myMessageFragment = new Message_Fragmentum();
 
@@ -45,8 +46,10 @@ public class Message_Fragmentum extends Fragment {
 
         // TODO (5.1) Messagtext holen aus dem Bundle
         String zurueckgeholterText = "Displayed by FRAGMENT !\n\n";
-        zurueckgeholterText += getArguments().getString(EXTRA_MESSAGE_TO_TRANSFER_KEY); //FIXME (5.2) ?? woher kommt die methode getArguments
-        TextView myMessageTextView = getView().findViewById(R.id.ausgabe_feld); // FIXME (5.3) ?? woher kommt die methode getView
+        zurueckgeholterText += getArguments().getString(EXTRA_MESSAGE_TO_TRANSFER_KEY);
+        //FIXME (5.2) ?? woher kommt die methode getArguments
+        TextView myMessageTextView = getView().findViewById(R.id.ausgabe_feld);
+        // FIXME (5.3) ?? woher kommt die methode getView
         myMessageTextView.setText(zurueckgeholterText);
 
     }

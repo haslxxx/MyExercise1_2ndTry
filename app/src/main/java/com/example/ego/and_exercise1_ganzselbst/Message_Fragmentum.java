@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 public class Message_Fragmentum extends Fragment {
 
-    private static final String EXTRA_MESSAGE_TO_TRANSFER_KEY = "peperl";
+    private static final String EXTRA_MESSAGE_TO_TRANSFER_KEY = "peperl"; // mein key heisst jetzt pepperl !!  nur die konstante die diesen key definiert heißt EXTRA_MESSAGE ......
 
     // Das Fragment stelle hier eine Methode zur verfügung über die es dann selber erzeugt wird
     // ... ein bisserl 3 mal um den hals und dann gekratzt ...
@@ -55,7 +55,8 @@ public class Message_Fragmentum extends Fragment {
     }
 
     // Für den fall, daß die app "stillgelegt" wird (onSTop, onPause .. oder so ??) -- > anzeigetext sichern
-    // FIXME (5.4)  Ohne passiert auch nix ! -> siehe auch Message_Activity (detto)
+    // FIXMEd (5.4)  Ohne passiert auch nix ! -> siehe auch Message_Activity (detto)  ... weil die daten aus dem intent kommen,und das geht nicht verloren
+    // anders wenn in diesem schirm noch ein weiteres eingabefeld wäre ... diesen inhalt müsste man dann sichern
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

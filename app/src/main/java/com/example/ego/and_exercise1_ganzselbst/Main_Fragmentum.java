@@ -80,11 +80,11 @@ onViewCreated is a 'make sure that view is fully created'.
 
         //Referenzen auf die elemente im layout holen
         /* FIXME (2.3) ?? warum sieht das in einem Fragment anders aus als in einer Activity (ohne getView() ) (siehe Message_activity)
-        // FIXME (2.3ff) woher kommt das getView() und worauf bezieht sich's; Warum braucht's keine parameter (siehe doku)
+        // FIXMEd (2.3ff) woher kommt das getView() und worauf bezieht sich's; Warum braucht's keine parameter (siehe doku) --> super
                 anyView = getView(int position, View convertView, ViewGroup parent)
                 Get a View that displays the data at the specified position in the data set.  --> von einer parameterlosen variante steht nix in der doku !!
         */
-        textEingabe    = getView().findViewById(R.id.textField);
+        textEingabe    = super.getView().findViewById(R.id.textField);
         activityAufruf = getView().findViewById(R.id.button_open_activity);
         fragmentAufruf = getView().findViewById(R.id.button_open_fragment);
 
@@ -153,11 +153,12 @@ onViewCreated is a 'make sure that view is fully created'.
 
                 getFragmentManager()                            // Fragments werden immer mit dem getFragmentManager erzeugt (siehe hintergründe ganz oben)
                         .beginTransaction()
-                        // FIXME (2.5) Wir ersetzen hier die aktuelle View (??) gegen das neuen Fragment (oder deren View ?? )
+                        // FIXMEd (2.5) Wir ersetzen hier die aktuelle View (?main_fragment gegen das neuen Fragment ()
                         .replace(R.id.my_empty_container,
-                        // FIXME (2.4) ?? eigentlich sind wir doch im  "my_fragment_main" siehe onCreateView, wieso also DAS (my_empty_container)
+                        // FIXMEd (2.4) ?? eigentlich sind wir doch im  "my_fragment_main" siehe onCreateView, wieso also DAS (my_empty_container) ... weil das fragment im empty fragment läuft (siehe activityMain)
 //                                Message_Fragmentum.getFragment(textZuUebergeben))
-                                  // FIXME (2.5)  Das mit dem Intent geht im Fragment scheinbar nicht  :-(   ?? Warum !
+                                  // FIXMEd (2.5)  Das mit dem Intent geht im Fragment scheinbar nicht  :-(   ?? Warum ! Fragments sind auf DIE app beschränkt. Activites könne global genutzt werden
+                                //Fragents werden in der app gemanaged  activities vom system
 // ####### A. Ohne die Methode zum erzeugen des Fragments (siehe Message_Fragmentum)
 //                                    new Message_Fragmentum())   // So wäre alles fein, wenn wir nicht diesen blöden string aus dem eingabefeld in Main_Fragmentum übermitteln müssten
 // ####### B. MIT der Methode (Message_Fragmentum.myGetFragment)
@@ -171,7 +172,7 @@ onViewCreated is a 'make sure that view is fully created'.
     }
 
     // Methode 3  onSaveInstanceState
-    // TODO (2.6) wir kümmern uns um die daten für den fall das das system das Fragment Stopp't
+    // TODOd (2.6) wir kümmern uns um die daten für den fall das das system das Fragment Stopp't
     /*
     There are a few scenarios in which your activity is destroyed due to normal app behavior, such as when the user presses the Back button
     or your activity signals its own destruction by calling the finish() method.
@@ -196,7 +197,9 @@ onViewCreated is a 'make sure that view is fully created'.
 
 }
 
-// FIXME (my_fragment_main.xml)  ?? Jeglicher versuch den editText mit einer Viewgroup wie Textlayout, TextinputLayout zu klammern
-// FIXME .. führt unweigerlich zu einer fehlermeldung , weil er diese Klassen nicht findet  --> Frag mal das INTERNET ... Das Forum schweigt sowieso
+// FIXMEd (my_fragment_main.xml)  ?? Jeglicher versuch den editText mit einer Viewgroup wie Textlayout, TextinputLayout zu klammern
+// FIXMEd .. führt unweigerlich zu einer fehlermeldung , weil er diese Klassen nicht findet  --> Frag mal das INTERNET ... Das Forum schweigt sowieso
+// template verwenden (gradle scripts) .. da gibts imports (siehe angabe) dann funktioierts
 
-// FIXME (my_fragmen_main.xml) ?? die texte für Buttons aus dem strings.xml werde in UPPERCASE ausgegeben ?? wieso ?? was dagegen tun
+// FIXMEd (my_fragmen_main.xml) ?? die texte für Buttons aus dem strings.xml werde in UPPERCASE ausgegeben ?? wieso ?? was dagegen tun
+// vordefinierte attribute  ... mit textAllcaps true false kann es geändert werden  ... sieghe auch in seiner lösung den "style " parameter

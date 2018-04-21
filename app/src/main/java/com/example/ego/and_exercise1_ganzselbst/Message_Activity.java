@@ -56,15 +56,16 @@ public class Message_Activity extends AppCompatActivity {
     // --> könnte die funktion getMyIntent auch in Main_Fragmentum stehen, oder dort sogar der code direkt im onClick() stehen
 
     // Methode 2  Was beim erzeugen der Klasse passiert .. i.e. der constructor
-    // FIXME (3.0) ?? Ist das eigentlich ein Konstruktor,
-    // FIXME (3.0.1) ?? Wo wird "Message_Activity" instanziert
+    // FIXMEd (3.0) ?? Ist das eigentlich ein Konstruktor, .... der wird vom system befriedigt weil über den intent (startActivity) die klasse instanziert wird
+    // FIXMEd (3.0.1) ?? Wo wird "Message_Activity" instanziert
     @Override
     protected void onCreate(Bundle myOnsavedInstanceState_3) {
         super.onCreate(myOnsavedInstanceState_3);
         setContentView(R.layout.my_message_screen);       // Set activity content; inflate ressource; add top level Views to activity
 
         TextView ausgabeView = findViewById(R.id.ausgabe_feld); //Ausgabe View erzeugen und referenz auf das textfeld herstellen
-        //FIXME ?? Warum brauchen wir hier kein 'getView() wie im Main_Fragmentum.java
+        //FIXMEd ?? Warum brauchen wir hier kein 'getView() wie im Main_Fragmentum.java
+        // ... in einer activity hat man immer einen View/ nicht so im fragment (dias muß keine haben) .. hat es erst nach onCreateView
 
         // A. Feld befüllen ... zunächst HARDCODED, bis ich die übergabemethode (mit dem Intent)  verstanden habe
         // ausgabeView.setText("Ich bin eine ausgabe");
